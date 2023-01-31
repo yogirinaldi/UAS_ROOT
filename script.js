@@ -3,8 +3,11 @@ const alertMessage = document.getElementById('alertMessage');
 const prevEmployee = document.getElementById('previewEmployee');
 const formEmployee = document.getElementById('formEmployee');
 
+let api_url = "http://localhost:3000";
+
 let employeesHTML = '';
 let employeesArr = [];
+
 
 
 let firstNameValue;
@@ -50,7 +53,7 @@ const renderData = (data) => {
     employeesList.innerHTML = employeesHTML;
 };
 
-fetch("https://untitled-etb861i34su6.runkit.sh/api/employees")
+fetch(api_url)
   .then((res) => res.json())
   .then((data) => {
     employeesArr = data;
