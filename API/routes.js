@@ -59,4 +59,16 @@ router.patch('/employees/:id', async (req, res) => {
     }
 })
 
+//Delete by ID Method
+router.delete('/employees/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const data = await Employees.findByIdAndDelete(id)
+        res.send(`Document "${data.firstName}" has been deleted..`)
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+})
+
 module.exports = router;
