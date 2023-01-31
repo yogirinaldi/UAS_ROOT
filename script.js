@@ -247,16 +247,7 @@ function saveEmployee() {
         renderData([data]);
         employeesArr.push(data);
 
-        alertMessage.innerHTML = `
-        <div class="alert alert-success text-white alert-dismissible fade show" role="alert">
-          <span class="alert-icon"><i class="material-icons align-middle">thumb_up</i></span>
-          <span class="alert-text"><strong>Add!</strong> Employee added successfully!</span>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-        </div>`;
-      alertDismiss();
-      modalDismiss();
+        
 
     });
 
@@ -295,20 +286,46 @@ function updateEmployee() {
       renderData(employeesArr);
 
 
-      alertMessage.innerHTML = `
-      <div class="alert alert-info text-white alert-dismissible fade show" role="alert">
-        <span class="alert-icon"><i class="material-icons align-middle">thumb_up</i></span>
-        <span class="alert-text"><strong>Edit!</strong> Employee updated successfully!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>`;
-      alertDismiss();
-      modalDismiss();
+      
 
     });
 
     return false;
 
   
+}
+
+function deleteEmployee() {
+
+    // Delete a student
+    // method: DELETE
+    fetch('https://untitled-etb861i34su6.runkit.sh/api/employees/' + idEmployee, {
+            method: 'DELETE'
+        })
+        .then(() => {
+          $(document).ready(function(){
+            $("#"+idEmployee).remove();
+          });
+          
+          employeesArr.splice(employeesArr.findIndex((item)=> item._id === idEmployee),1);
+
+            if (employeesArr.length > 0) {
+              employeesHTML = '';
+              renderData(employeesArr);                
+            }else{       
+              employeesHTML = '';         
+                employeesList.innerHTML = `
+                <tr>
+                  <td colspan="6">
+                    <p class="lead text-center">Record is empty</p>
+                  </td>
+                </tr>`;
+              }
+
+        
+        
+                   
+        });
+      
+
 }
