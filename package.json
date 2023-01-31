@@ -1,0 +1,26 @@
+{
+  "name": "uas_root",
+  "version": "1.0.0",
+  "description": "uas root",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yogirinaldi/UAS_ROOT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yogirinaldi/UAS_ROOT/issues"
+  },
+  "homepage": "https://github.com/yogirinaldi/UAS_ROOT#readme",
+  "keywords": [],
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "request": "^2.88.2"
+  }
+}
