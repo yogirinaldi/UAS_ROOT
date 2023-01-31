@@ -25,4 +25,22 @@ router.get('/employees/:id', async (req, res) => {
     }
 })
 
+//Post Method
+router.post('/employees/add', async (req, res) => {
+    const data = new Employees({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        address: req.body.address,
+        phone: req.body.phone
+        });
+    try {
+        const dataToSave = await data.save();
+        res.status(200).json(dataToSave)
+    }
+    catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
 module.exports = router;
