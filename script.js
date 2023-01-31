@@ -59,6 +59,9 @@ fetch("https://untitled-etb861i34su6.runkit.sh/api/employees")
     }
   });
 
+
+
+
 let idEmployee = "";
 
 employeesList.addEventListener('click', (e) => {
@@ -256,6 +259,8 @@ function saveEmployee() {
           <span aria-hidden="true">&times;</span>
           </button>
         </div>`;
+      alertDismiss();
+      modalDismiss();
 
     });
 
@@ -293,6 +298,7 @@ function updateEmployee() {
       employeesHTML = '';
       renderData(employeesArr);
 
+
       alertMessage.innerHTML = `
       <div class="alert alert-info text-white alert-dismissible fade show" role="alert">
         <span class="alert-icon"><i class="material-icons align-middle">thumb_up</i></span>
@@ -301,9 +307,8 @@ function updateEmployee() {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>`;
-
-
-      
+      alertDismiss();
+      modalDismiss();
 
     });
 
@@ -311,6 +316,9 @@ function updateEmployee() {
 
   
 }
+
+
+
 
 function deleteEmployee() {
 
@@ -347,9 +355,32 @@ function deleteEmployee() {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>`;
+        alertDismiss();
         
                    
         });
       
 
 }
+
+
+
+
+
+
+function alertDismiss(){
+  window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+  }, 3500);
+}
+
+function modalDismiss(){
+  window.setTimeout(function() {
+    $(".modal").slideUp(500, function(){
+        $(this).modal('hide');
+    });
+  }, 100);
+}
+
